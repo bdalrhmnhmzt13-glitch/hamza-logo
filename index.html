@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حمزة - مطور ويب محترف</title>
+    <title>حمزة - مطور ويب محترف | مواقع ويب، بوتات تليجرام، متاجر إلكترونية</title>
     <style>
         * {
             margin: 0;
@@ -70,6 +70,7 @@
             color: var(--light);
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
@@ -83,89 +84,333 @@
             background: rgba(0, 0, 0, 0.4);
         }
 
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary);
+            overflow: hidden;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-text {
+            text-align: right;
+            max-width: 500px;
+        }
+
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--light);
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 40px;
             background: var(--accent);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: bold;
-            transition: all 0.3s;
-            margin: 5px;
-            border: none;
-            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            margin: 10px;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             background: #c0392b;
+        }
+
+        .cta-button.telegram {
+            background: var(--telegram);
+        }
+
+        .cta-button.whatsapp {
+            background: var(--whatsapp);
+        }
+
+        .cta-button.telegram:hover {
+            background: #0077b5;
+        }
+
+        .cta-button.whatsapp:hover {
+            background: #128C7E;
         }
 
         /* Sections */
         section {
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
             color: var(--light);
+            position: relative;
         }
 
-        /* Services Grid */
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill {
+            background: var(--secondary);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat h4 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .service-card {
             background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
             transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: right;
+            margin: 1rem 0;
+        }
+
+        .service-features li {
+            margin: 0.5rem 0;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
             background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--accent);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.08);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .form-group label {
-            display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
@@ -173,27 +418,137 @@
         .form-group input,
         .form-group textarea,
         .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
             font-size: 1rem;
         }
 
         .submit-btn {
-            width: 100%;
-            padding: 12px;
             background: var(--accent);
             color: white;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1.1rem;
             cursor: pointer;
             transition: background 0.3s;
+            font-weight: bold;
         }
 
         .submit-btn:hover {
             background: #c0392b;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(-5px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--secondary);
+        }
+
+        .contact-item.telegram i {
+            background: var(--telegram);
+        }
+
+        .contact-item.whatsapp i {
+            background: var(--whatsapp);
+        }
+
+        .contact-item.facebook i {
+            background: var(--facebook);
+        }
+
+        .contact-item.email i {
+            background: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s, background 0.3s;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-link.telegram:hover {
+            background: var(--telegram);
+        }
+
+        .social-link.whatsapp:hover {
+            background: var(--whatsapp);
+        }
+
+        .social-link.facebook:hover {
+            background: var(--facebook);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Image Placeholder Styles */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            color: white;
+            font-size: 2rem;
         }
 
         /* Responsive */
@@ -203,24 +558,42 @@
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            .services-grid {
+            .about-content,
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
-        }
 
-        /* Icons using Unicode */
-        .icon::before {
-            margin-left: 5px;
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-text {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 80%;
+                text-align: center;
+            }
         }
-        
-        .telegram::before { content: "📨"; }
-        .whatsapp::before { content: "💬"; }
-        .website::before { content: "🌐"; }
-        .store::before { content: "🛒"; }
-        .bot::before { content: "🤖"; }
     </style>
 </head>
 <body>
@@ -231,7 +604,10 @@
                 <div class="logo">مطور ويب</div>
                 <ul class="nav-links">
                     <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">عنّي</a></li>
                     <li><a href="#services">خدماتي</a></li>
+                    <li><a href="#portfolio">معرض الأعمال</a></li>
+                    <li><a href="#pricing">الباقات</a></li>
                     <li><a href="#contact">اتصل بي</a></li>
                 </ul>
             </nav>
@@ -241,45 +617,234 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>حمزة - مطور ويب محترف</h1>
-            <p>أطور مواقع ويب، بوتات تليجرام، ومتاجر إلكترونية</p>
-            <div>
-                <a href="https://t.me/Hamza221w" class="cta-button">تواصل على تليجرام</a>
-                <a href="https://wa.me/963995606528" class="cta-button">تواصل على واتساب</a>
+            <div class="profile-section">
+                <div class="profile-image">
+                    <!-- ضع صورتك الشخصية هنا -->
+                    <div class="image-placeholder">👨‍💻</div>
+                    <!--
+                    <img src="images/profile.jpg" alt="صورة حمزة - مطور ويب محترف">
+                    -->
+                </div>
+                <div class="profile-text">
+                    <h1>حمزة - مطور ويب محترف</h1>
+                    <p>أحول أفكارك إلى واقع رقمي متميز | مواقع ويب • بوتات تليجرام • متاجر إلكترونية</p>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://t.me/Hamza221w" class="cta-button telegram">📨 تواصل على تليجرام</a>
+                <a href="https://wa.me/963995606528" class="cta-button whatsapp">💬 تواصل على واتساب</a>
+                <a href="#contact" class="cta-button">🚀 ابدأ مشروعك الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">من أنا؟</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>مطور ويب شغوف بتحويل الأفكار إلى واقع</h3>
+                    <p>أمتلك خبرة 3+ سنوات في تطوير حلول ويب متكاملة. أتخصص في بناء مواقع ويب احترافية، بوتات تليجرام ذكية، ومتاجر إلكترونية متكاملة.</p>
+                    <p>كل مشروع هو قصة نجاح جديدة، وأعمل جاهداً لضمان أن تكون قصتك استثنائية. أهتم بأدق التفاصيل لضمان جودة المنتج النهائي وأدائه المتميز.</p>
+                    <div class="skills">
+                        <span class="skill">HTML/CSS</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">React</span>
+                        <span class="skill">Node.js</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">PHP</span>
+                        <span class="skill">MySQL</span>
+                        <span class="skill">Telegram API</span>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h4>50+</h4>
+                        <p>مشروع مكتمل</p>
+                    </div>
+                    <div class="stat">
+                        <h4>3+</h4>
+                        <p>سنوات خبرة</p>
+                    </div>
+                    <div class="stat">
+                        <h4>40+</h4>
+                        <p>عميل راضٍ</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+    <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">خدماتي</h2>
             <div class="services-grid">
+                <!-- Website Development -->
                 <div class="service-card">
                     <div class="service-icon">🌐</div>
                     <h3>تطوير المواقع</h3>
-                    <p>مواقع ويب متجاوبة واحترافية</p>
+                    <p>مواقع ويب متجاوبة واحترافية تلبي جميع احتياجاتك</p>
+                    <ul class="service-features">
+                        <li>مواقع شركات واحترافية</li>
+                        <li>منصات محتوى متكاملة</li>
+                        <li>تطبيقات ويب ديناميكية</li>
+                        <li>لوحات تحكم وإدارة</li>
+                        <li>تصميم متجاوب</li>
+                    </ul>
                 </div>
+
+                <!-- Telegram Bots -->
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
                     <h3>بوتات تليجرام</h3>
-                    <p>بوتات ذكية لجميع الأغراض</p>
+                    <p>بوتات ذكية تُحدث فرقاً حقيقياً في عملك</p>
+                    <ul class="service-features">
+                        <li>بوتات خدمة العملاء</li>
+                        <li>بوتات إدارة المجموعات</li>
+                        <li>بوتات تجارية ودفع</li>
+                        <li>بوتات ترفيهية وألعاب</li>
+                        <li>بوتات حجز مواعيد</li>
+                    </ul>
                 </div>
+
+                <!-- E-commerce -->
                 <div class="service-card">
                     <div class="service-icon">🛒</div>
                     <h3>متاجر إلكترونية</h3>
-                    <p>متاجر متكاملة بجميع الخدمات</p>
+                    <p>متاجر متكاملة تحول الزوار إلى عملاء</p>
+                    <ul class="service-features">
+                        <li>متاجر متكاملة بجميع الخدمات</li>
+                        <li>تكامل مع أنظمة الدفع</li>
+                        <li>إدارة مخزون وطلبات</li>
+                        <li>تحسين SEO</li>
+                        <li>لوحة تحكم شاملة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">معرض أعمالي</h2>
+            <div class="portfolio-gallery">
+                <!-- مشروع 1 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- ضع صورة مشروعك الأول هنا -->
+                        <div class="image-placeholder">🌐</div>
+                        <!--
+                        <img src="images/project1.jpg" alt="موقع شركة احترافي">
+                        -->
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>موقع شركة</h3>
+                        <p>موقع احترافي مع لوحة تحكم متكاملة</p>
+                    </div>
+                </div>
+
+                <!-- مشروع 2 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- ضع صورة مشروعك الثاني هنا -->
+                        <div class="image-placeholder">🛒</div>
+                        <!--
+                        <img src="images/project2.jpg" alt="متجر إلكتروني متكامل">
+                        -->
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>متجر إلكتروني</h3>
+                        <p>متجر متكامل مع نظام دفع إلكتروني</p>
+                    </div>
+                </div>
+
+                <!-- مشروع 3 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- ضع صورة مشروعك الثالث هنا -->
+                        <div class="image-placeholder">🤖</div>
+                        <!--
+                        <img src="images/project3.jpg" alt="بوت تليجرام ذكي">
+                        -->
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>بوت تليجرام</h3>
+                        <p>بوت خدمة عملاء ذكي</p>
+                    </div>
+                </div>
+
+                <!-- مشروع 4 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- ضع صورة مشروعك الرابع هنا -->
+                        <div class="image-placeholder">📱</div>
+                        <!--
+                        <img src="images/project4.jpg" alt="تطبيق ويب متكامل">
+                        -->
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>تطبيق ويب</h3>
+                        <p>تطبيق ويب متكامل لإدارة المهام</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">باقات الأسعار</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>الباقة الأساسية</h3>
+                    <div class="price">$199</div>
+                    <ul class="service-features">
+                        <li>موقع ويب 5 صفحات</li>
+                        <li>تصميم متجاوب</li>
+                        <li>استضافة سنة مجانية</li>
+                        <li>دعم فني 3 أشهر</li>
+                    </ul>
+                    <a href="https://t.me/Hamza221w" class="cta-button">اطلب الآن</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>الباقة المتقدمة</h3>
+                    <div class="price">$399</div>
+                    <ul class="service-features">
+                        <li>متجر إلكتروني كامل</li>
+                        <li>بوت تليجرام للإشعارات</li>
+                        <li>نظام دفع إلكتروني</li>
+                        <li>شهادة SSL</li>
+                        <li>دعم فني 6 أشهر</li>
+                    </ul>
+                    <a href="https://t.me/Hamza221w" class="cta-button">اطلب الآن</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>بوت تليجرام</h3>
+                    <div class="price">$149</div>
+                    <ul class="service-features">
+                        <li>بوت مخصص حسب الطلب</li>
+                        <li>واجهة إدارة</li>
+                        <li>استضافة سنة</li>
+                        <li>دعم فني 3 أشهر</li>
+                    </ul>
+                    <a href="https://t.me/Hamza221w" class="cta-button">اطلب الآن</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">اتصل بي</h2>
-            <div class="contact-form">
-                <form id="contactForm">
+            <div class="contact-grid">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label for="name">الاسم الكامل</label>
                         <input type="text" id="name" required>
@@ -295,6 +860,7 @@
                             <option value="website">موقع ويب</option>
                             <option value="bot">بوت تليجرام</option>
                             <option value="ecommerce">متجر إلكتروني</option>
+                            <option value="other">خدمة أخرى</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -303,38 +869,120 @@
                     </div>
                     <button type="submit" class="submit-btn">إرسال الطلب</button>
                 </form>
+
+                <div class="contact-info">
+                    <div class="contact-item telegram">
+                        <i>📨</i>
+                        <div>
+                            <h4>قناة التليجرام</h4>
+                            <p>@Flix1211</p>
+                        </div>
+                    </div>
+                    <div class="contact-item telegram">
+                        <i>✈️</i>
+                        <div>
+                            <h4>حساب التليجرام</h4>
+                            <p>@Hamza221w</p>
+                        </div>
+                    </div>
+                    <div class="contact-item whatsapp">
+                        <i>💬</i>
+                        <div>
+                            <h4>الواتساب</h4>
+                            <p>+963 995 606 528</p>
+                        </div>
+                    </div>
+                    <div class="contact-item facebook">
+                        <i>📘</i>
+                        <div>
+                            <h4>فيسبوك</h4>
+                            <p>hox0812</p>
+                        </div>
+                    </div>
+                    <div class="contact-item email">
+                        <i>📧</i>
+                        <div>
+                            <h4>البريد الإلكتروني</h4>
+                            <p>hamza.dev@example.com</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div style="text-align: center; margin-top: 2rem;">
-                <h3>وسائل التواصل</h3>
-                <div style="margin-top: 1rem;">
-                    <p>تليجرام: @Hamza221w</p>
-                    <p>واتساب: +963995606528</p>
-                    <p>فيسبوك: hox0812</p>
-                </div>
+            <div class="social-links">
+                <a href="https://t.me/Flix1211" class="social-link telegram">📨</a>
+                <a href="https://t.me/Hamza221w" class="social-link telegram">✈️</a>
+                <a href="https://wa.me/963995606528" class="social-link whatsapp">💬</a>
+                <a href="https://www.facebook.com/hox0812" class="social-link facebook">📘</a>
             </div>
         </div>
     </section>
 
-    <script>
-        // منع الإرسال الفعلي للنموذج وعرض رسالة
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('شكراً لتواصلك! سأرد عليك قريباً.');
-            this.reset();
-        });
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>تابعني على وسائل التواصل الاجتماعي للاطلاع على أحدث أعمالي</p>
+                <div class="social-links">
+                    <a href="https://t.me/Flix1211" class="social-link telegram">📨</a>
+                    <a href="https://t.me/Hamza221w" class="social-link telegram">✈️</a>
+                    <a href="https://wa.me/963995606528" class="social-link whatsapp">💬</a>
+                    <a href="https://www.facebook.com/hox0812" class="social-link facebook">📘</a>
+                </div>
+                <p>© 2024 جميع الحقوق محفوظة | مطور ويب محترف</p>
+            </div>
+        </div>
+    </footer>
 
-        // التنقل السلس
+    <script>
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('شكراً لتواصلك! سأرد عليك في أقرب وقت ممكن.');
+            this.reset();
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 62, 80, 0.98)';
+            } else {
+                header.style.background = 'rgba(44, 62, 80, 0.95)';
+            }
+        });
+
+        // Add animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .portfolio-item, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
         });
     </script>
 </body>
