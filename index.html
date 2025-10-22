@@ -355,3 +355,266 @@
     </script>
 </body>
 </html>
+html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البوت الإسلامي - قناة فلوكس</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        .header h1 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.3em;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .stat {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        .last-message {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 5px solid #667eea;
+            margin: 15px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .timestamp {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .status-online {
+            display: inline-block;
+            background: #2ecc71;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        .channel-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .channel-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .history-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🕌 البوت الإسلامي</h1>
+            <p>بوت تلقائي يرسل رسائل إسلامية إلى قناة التلجرام</p>
+            <div id="status" class="status-online">● متصل بالبوت</div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h3>📊 الإحصائيات</h3>
+                <div class="stat" id="totalMessages">0</div>
+                <p>إجمالي الرسائل المرسلة</p>
+            </div>
+            
+            <div class="card">
+                <h3>📢 القناة</h3>
+                <p id="channelName">@Flix1211</p>
+                <a href="https://t.me/Flix1211" class="channel-link" target="_blank">
+                    زيارة القناة
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3>🕒 آخر تحديث</h3>
+                <p id="lastUpdate">--</p>
+                <p>آخر رسالة تم إرسالها</p>
+            </div>
+        </div>
+
+        <div class="message-box">
+            <h3>📨 آخر الرسائل</h3>
+            <div id="lastMessage" class="last-message">
+                جاري تحميل آخر رسالة...
+            </div>
+            <div id="messageTime" class="timestamp"></div>
+        </div>
+
+        <div class="message-box">
+            <h3>📜 سجل الرسائل</h3>
+            <div id="messageHistory">
+                جاري تحميل السجل...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // عناصر DOM
+        const totalMessagesEl = document.getElementById('totalMessages');
+        const channelNameEl = document.getElementById('channelName');
+        const lastUpdateEl = document.getElementById('lastUpdate');
+        const lastMessageEl = document.getElementById('lastMessage');
+        const messageTimeEl = document.getElementById('messageTime');
+        const messageHistoryEl = document.getElementById('messageHistory');
+        const statusEl = document.getElementById('status');
+
+        // عنوان API الخاص بالبوت (تأكد من تشغيل البوت على نفس الشبكة)
+        const API_URL = 'http://localhost:8000/api/data';
+        const HISTORY_API_URL = 'http://localhost:8000/api/history';
+
+        async function loadBotData() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                // تحديث الواجهة بالبيانات
+                totalMessagesEl.textContent = data.total_messages;
+                channelNameEl.textContent = data.channel;
+                lastUpdateEl.textContent = data.last_time;
+                lastMessageEl.textContent = data.last_message || 'لا توجد رسائل بعد';
+                messageTimeEl.textContent = data.last_time ? `الوقت: ${data.last_time}` : '';
+                
+                // تحديث الحالة
+                if (data.online) {
+                    statusEl.className = 'status-online';
+                    statusEl.textContent = '● متصل بالبوت';
+                }
+                
+            } catch (error) {
+                console.log('❌ لا يمكن الاتصال بالبوت:', error);
+                statusEl.style.background = '#e74c3c';
+                statusEl.textContent = '● غير متصل';
+                lastMessageEl.textContent = '⚠️ لا يمكن الاتصال بالبوت. تأكد من تشغيله على localhost:8000';
+            }
+        }
+
+        async function loadMessageHistory() {
+            try {
+                const response = await fetch(HISTORY_API_URL);
+                const history = await response.json();
+                
+                if (history.length > 0) {
+                    messageHistoryEl.innerHTML = history.map(msg => `
+                        <div class="history-item">
+                            <div>${msg.message}</div>
+                            <div class="timestamp">${msg.time}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    messageHistoryEl.innerHTML = '<p>لا توجد رسائل في السجل</p>';
+                }
+                
+            } catch (error) {
+                messageHistoryEl.innerHTML = '<p>⚠️ لا يمكن تحميل سجل الرسائل</p>';
+            }
+        }
+
+        // تحميل البيانات أول مرة
+        loadBotData();
+        loadMessageHistory();
+
+        // تحديث البيانات كل 10 ثواني
+        setInterval(() => {
+            loadBotData();
+            loadMessageHistory();
+        }, 10000);
+
+        // إضافة تأثيرات عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
+</body>
+</html>
