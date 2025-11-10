@@ -725,6 +725,28 @@
 <div class="portfolio-gallery" id="portfolioGallery">
     <!-- المشاريع سيتم إدراجها هنا ديناميكيًا -->
 </div>
+let projects = []; // سيتم استدعاؤها من لوحة Admin لاحقًا
+
+function renderGallery() {
+    const gallery = document.getElementById('portfolioGallery');
+    gallery.innerHTML = projects.map(p => `
+        <div class="portfolio-item fade-in">
+            <div class="portfolio-image">
+                <img src="${p.img}" alt="${p.name}" 
+                     onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=image-placeholder>🌐</div>';">
+            </div>
+            <div class="portfolio-info">
+                <h3>${p.name}</h3>
+                <p>${p.desc}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// مثال: استدعاء المشاريع بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    renderGallery();
+});
 
         // التنقل السلس
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
